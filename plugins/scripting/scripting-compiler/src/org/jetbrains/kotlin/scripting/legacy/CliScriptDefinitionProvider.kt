@@ -15,7 +15,7 @@ class CliScriptDefinitionProvider : LazyScriptDefinitionProvider() {
     private val definitions: MutableList<KotlinScriptDefinition> = arrayListOf(StandardScriptDefinition)
 
     override val currentDefinitions: Sequence<KotlinScriptDefinition> =
-        definitionsFromSources.asSequence().flatMap { it } + definitions.asSequence()
+        definitions.asSequence() + definitionsFromSources.asSequence().flatMap { it }
 
     override fun getDefaultScriptDefinition(): KotlinScriptDefinition {
         return StandardScriptDefinition
@@ -24,7 +24,7 @@ class CliScriptDefinitionProvider : LazyScriptDefinitionProvider() {
     fun setScriptDefinitions(newDefinitions: List<KotlinScriptDefinition>) {
         lock.write {
             definitions.clear()
-            definitions.addAll(newDefinitions)
+            definitions.addAll(newDefinitions.filterNot { it == StandardScriptDefinition })
         }
     }
 

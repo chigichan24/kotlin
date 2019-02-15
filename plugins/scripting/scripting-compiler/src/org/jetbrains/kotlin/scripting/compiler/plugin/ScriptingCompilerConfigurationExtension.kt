@@ -23,6 +23,8 @@ import org.jetbrains.kotlin.script.ScriptDefinitionProvider
 import org.jetbrains.kotlin.script.ScriptDependenciesProvider
 import org.jetbrains.kotlin.script.ScriptReportSink
 import org.jetbrains.kotlin.script.StandardScriptDefinition
+import org.jetbrains.kotlin.scripting.compiler.plugin.definitions.ScriptDefinitionsFromClasspathDiscoverySource
+import org.jetbrains.kotlin.scripting.compiler.plugin.definitions.loadScriptTemplatesFromClasspath
 import org.jetbrains.kotlin.scripting.legacy.CliScriptDefinitionProvider
 import java.io.File
 
